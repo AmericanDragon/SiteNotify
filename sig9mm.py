@@ -12,6 +12,7 @@ from decouple import config
 #setup twilio (replace with your credentials)
 account_sid = config('TWILIO_ACCOUNT_SID')
 auth_token = config('TWILIO_AUTH_TOKEN')
+twilio_phone = config('TWILIO_PHONE')
 client = Client(account_sid, auth_token)
 
 
@@ -44,7 +45,7 @@ while not buyButton:
                 #addToCartBtn.click()
                 print("Buy Available")
                 message = client.messages.create(body='Sig 9mm Available '+urls[x],\
-                            from_='+17816138682',to='+15128719350')
+                            from_=twilio_phone,to=' Your phone')
                 print(message.sid)
                 buyButton = True
 
