@@ -11,6 +11,7 @@ from decouple import config
 #setup twilio (replace with your credentials)
 account_sid = config('TWILIO_ACCOUNT_SID')
 auth_token = config('TWILIO_AUTH_TOKEN')
+twilio_phone = config('TWILIO_PHONE')
 client = Client(account_sid, auth_token)
 
 #url List
@@ -45,7 +46,7 @@ while buyButton==False:
 
     if text=='Available':
         message = client.messages.create(body='Federal 9mm Available '+urls[counter],\
-                            from_='+17816138682',to='+15128719350')
+                            from_=twilio_phone,to='YOUR NUMBER')
         print(message.sid)
         #buyButton=True
     if counter==(len(urls)-1):
